@@ -38,7 +38,7 @@ public class Instrucoes extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("A Gigi é uma cobrinha muito gulosa e está sempre com muita fome. \nAjude Gigi a conseguir comer o maior número possível de ratos.  \nUtilize as teclas do teclado para se movimentar:\n-> Andar para a direita\n<- Andar para a esquerda\n[seta para cima] Ir para baixo\n[seta para baixo] Ir para cima");
+        jTextArea1.setText("A Gigi é uma cobrinha muito gulosa e está sempre com muita fome. \nAjude Gigi a conseguir comer o maior número possível de ratos.  \nUtilize as teclas do teclado para se movimentar:\n-> Andar para a direita\n<- Andar para a esquerda\n[seta para cima] Ir para cima\n[seta para baixo] Ir para baixo");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

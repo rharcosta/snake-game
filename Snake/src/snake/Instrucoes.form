@@ -70,7 +70,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="A Gigi &#xe9; uma cobrinha muito gulosa e est&#xe1; sempre com muita fome. &#xa;Ajude Gigi a conseguir comer o maior n&#xfa;mero poss&#xed;vel de ratos.  &#xa;Utilize as teclas do teclado para se movimentar:&#xa;-&gt; Andar para a direita&#xa;&lt;- Andar para a esquerda&#xa;[seta para cima] Ir para baixo&#xa;[seta para baixo] Ir para cima"/>
+            <Property name="text" type="java.lang.String" value="A Gigi &#xe9; uma cobrinha muito gulosa e est&#xe1; sempre com muita fome. &#xa;Ajude Gigi a conseguir comer o maior n&#xfa;mero poss&#xed;vel de ratos.  &#xa;Utilize as teclas do teclado para se movimentar:&#xa;-&gt; Andar para a direita&#xa;&lt;- Andar para a esquerda&#xa;[seta para cima] Ir para cima&#xa;[seta para baixo] Ir para baixo"/>
           </Properties>
         </Component>
       </SubComponents>
