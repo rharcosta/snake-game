@@ -9,10 +9,10 @@ import java.util.StringTokenizer;
 public class TCPClientHandler extends Thread {
 
     private Socket socket;
-    private Cliente caller;
+    private Jogar caller;
     private BufferedReader input;
 
-    public TCPClientHandler(Socket socket, Cliente caller) throws IOException {
+    public TCPClientHandler(Socket socket, Jogar caller) throws IOException {
         this.socket = socket;
         this.caller = caller;
         this.input = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
