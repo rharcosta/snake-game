@@ -49,8 +49,8 @@ public class TCPServerAtivosHandler extends Thread {
                 break;
             case KeyEvent.VK_DOWN:
                 caller.y += caller.d;
-                if (caller.y + caller.t > 470) {
-                    caller.y = 470 - caller.t;
+                if (caller.y + caller.t > 480) {
+                    caller.y = 480 - caller.t;
                 }
                 break;
             case KeyEvent.VK_UP:

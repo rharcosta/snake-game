@@ -22,8 +22,8 @@ public class Jogar extends javax.swing.JFrame {
         
         BufferedImage logoImg = null;
         try {
-            logoImg = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\sair.png"));
-        } catch (IOException e) {
+            logoImg = ImageIO.read(new File(Principal.class.getResource("imagens/sair.png").toURI()));
+        } catch (Exception e) {
             System.out.println("NÃO ACHEI IMAGEM DO LOGO!");
             e.printStackTrace();  //Exceção
         }
@@ -103,7 +103,7 @@ public class Jogar extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         jLabel1.setText("SCORE:");
@@ -177,8 +177,7 @@ public class Jogar extends javax.swing.JFrame {
                             .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
 
         pack();
