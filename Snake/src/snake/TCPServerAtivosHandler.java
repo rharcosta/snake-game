@@ -37,8 +37,8 @@ public class TCPServerAtivosHandler extends Thread {
         switch (tecla) {
             case KeyEvent.VK_RIGHT:
                 caller.x += caller.d;
-                if (caller.x + caller.t > 600) {
-                    caller.x = 600 - caller.t;
+                if (caller.x + caller.t > 700) {
+                    caller.x = 700 - caller.t;
                 }
                 break;
             case KeyEvent.VK_LEFT:
@@ -49,8 +49,8 @@ public class TCPServerAtivosHandler extends Thread {
                 break;
             case KeyEvent.VK_DOWN:
                 caller.y += caller.d;
-                if (caller.y + caller.t > 400) {
-                    caller.y = 400 - caller.t;
+                if (caller.y + caller.t > 470) {
+                    caller.y = 470 - caller.t;
                 }
                 break;
             case KeyEvent.VK_UP:

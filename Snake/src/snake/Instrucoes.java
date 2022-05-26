@@ -21,11 +21,11 @@ public class Instrucoes extends javax.swing.JFrame {
         BufferedImage logoImgDireita = null;
         BufferedImage logoImgEsquerda = null;
         try {
-            logoImgCima = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\setabaixo.png"));
-            logoImgBaixo = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\setacima.png"));
-            logoImgDireita = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\setadireita.png"));
-            logoImgEsquerda = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\setaesquerda.png"));
-        } catch (IOException e) {
+            logoImgCima = ImageIO.read(new File(Principal.class.getResource("imagens/setacima.png").toURI()));
+            logoImgBaixo = ImageIO.read(new File(Principal.class.getResource("imagens/setabaixo.png").toURI()));
+            logoImgDireita = ImageIO.read(new File(Principal.class.getResource("imagens/setadireita.png").toURI()));
+            logoImgEsquerda = ImageIO.read(new File(Principal.class.getResource("imagens/setaesquerda.png").toURI()));
+        } catch (Exception e) {
             System.out.println("NÃO ACHEI IMAGEM DO LOGO!");
             e.printStackTrace();
         }
@@ -132,7 +132,7 @@ public class Instrucoes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogarActionPerformed
-        new Jogar().setVisible(true);
+        new Principal().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnJogarActionPerformed
 

@@ -167,7 +167,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xa9; Copyright &quot;Snake&quot;. Created and developed by Rubia Archanjo."/>
+        <Property name="text" type="java.lang.String" value="&#xa9; Copyright &quot;Snake&quot;. Created and developed by L&#xed;via Spiller and Rubia Archanjo."/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel12">

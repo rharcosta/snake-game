@@ -17,7 +17,7 @@ public class TCPServerAtivosMain extends Thread {
         System.out.println(this.getClass().getSimpleName() + " rodando na porta: " + server.getLocalPort());
         this.clientes = new ArrayList<>();
         x = y = 0;
-        t = 50;
+        t = 20;
         d = 10;
     }
 

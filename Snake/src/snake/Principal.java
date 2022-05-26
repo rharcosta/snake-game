@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -16,10 +15,12 @@ public class Principal extends javax.swing.JFrame {
         Color minhaCor = new Color(212, 247, 212);
         getContentPane().setBackground(minhaCor);
 
+        
+        
         BufferedImage logoImg = null;
         try {
-            logoImg = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\cobrinha.png"));
-        } catch (IOException e) {
+            logoImg = ImageIO.read(new File(Principal.class.getResource("imagens/cobrinha.png").toURI()));
+        } catch (Exception e) {
             System.out.println("NÃO ACHEI IMAGEM DO LOGO!");
             e.printStackTrace();  //Exceção
         }
@@ -86,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 14)); // NOI18N
         jLabel1.setText("BEM - VINDO, ESCOLHA SUA OPÇÃO ABAIXO: ");
 
-        jLabel5.setText("© Copyright \"Snake\". Created and developed by Rubia Archanjo.");
+        jLabel5.setText("© Copyright \"Snake\". Created and developed by Lívia Spiller and Rubia Archanjo.");
 
         jLabel12.setText("® 2022, All rights reserved.");
 
@@ -150,6 +151,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJogarActionPerformed
         new Jogar().setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnJogarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
