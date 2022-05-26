@@ -22,8 +22,8 @@ public class Jogar extends javax.swing.JFrame {
         
         BufferedImage logoImg = null;
         try {
-            logoImg = ImageIO.read(new File("C:\\Users\\rubia\\GitHub\\sistemas-distribuidos\\Snake\\src\\snake\\imagens\\sair.png"));
-        } catch (IOException e) {
+            logoImg = ImageIO.read(new File(Principal.class.getResource("imagens/sair.png").toURI()));
+        } catch (Exception e) {
             System.out.println("NÃO ACHEI IMAGEM DO LOGO!");
             e.printStackTrace();  //Exceção
         }
