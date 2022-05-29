@@ -1,4 +1,4 @@
-package snake;
+package snake.conexoes;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -32,45 +32,46 @@ public class TCPServerAtivosHandler extends Thread {
             }
         }
     }
+
     private synchronized void processar(String message) {
         int tecla = Integer.parseInt(message);
         switch (tecla) {
             case KeyEvent.VK_RIGHT:
-                caller.x += caller.d;
-                if (caller.x + caller.t > 700) {
-                    caller.x = 700 - caller.t;
+                caller.x += caller.vel;
+                if (caller.x + caller.tamX > 700) {
+                    caller.x = -30;
                 }
                 break;
             case KeyEvent.VK_LEFT:
-                caller.x -= caller.d;
+                caller.x -= caller.vel;
                 if (caller.x < 0) {
-                    caller.x = 0;
+                    caller.x = 700;
                 }
                 break;
             case KeyEvent.VK_DOWN:
-                caller.y += caller.d;
-                if (caller.y + caller.t > 480) {
-                    caller.y = 480 - caller.t;
-                }
-                break;
-            case KeyEvent.VK_UP:
-                caller.y -= caller.d;
-                if (caller.y < 0) {
+                caller.y += caller.vel;
+                if (caller.y + caller.tamY > 480) {
                     caller.y = 0;
                 }
                 break;
-            case KeyEvent.VK_A:
-                caller.d--;
-                if (caller.d < 0) {
-                    caller.d = 0;
+            case KeyEvent.VK_UP:
+                caller.y -= caller.vel;
+                if (caller.y < 0) {
+                    caller.y = 480;
                 }
                 break;
-            case KeyEvent.VK_S:
-                caller.d++;
-                if (caller.d > 10) {
-                    caller.d = 10;
-                }
-                break;
+            //case KeyEvent.VK_A:
+            //    caller.d--;
+            //    if (caller.d < 0) {
+            //        caller.d = 0;
+            //    }
+            //    break;
+            //case KeyEvent.VK_S:
+            //    caller.d++;
+            //    if (caller.d > 10) {
+            //        caller.d = 10;
+            //    }
+            //    break;
         }
     }
 
@@ -93,11 +94,13 @@ public class TCPServerAtivosHandler extends Thread {
                 message += "|";
                 message += caller.y;
                 message += "|";
-                message += caller.t;
+                message += caller.tamX;
                 message += "|";
-                message += caller.d;
+                message += caller.tamY;
+                message += "|";
+                message += caller.vel;
                 messageDispatcher(message);
-                System.out.println(message);
+                //System.out.println(message);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 break;

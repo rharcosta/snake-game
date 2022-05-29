@@ -1,5 +1,6 @@
-package snake;
+package snake.conexoes;
 
+import java.awt.Rectangle;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,15 +11,17 @@ public class TCPServerAtivosMain extends Thread {
 
     private List<TCPServerConnection> clientes;
     private ServerSocket server;
-    int x, y, t, d;
+    int x, y, tamX, tamY, vel;
 
     public TCPServerAtivosMain(int porta) throws IOException {
         this.server = new ServerSocket(porta);
         System.out.println(this.getClass().getSimpleName() + " rodando na porta: " + server.getLocalPort());
         this.clientes = new ArrayList<>();
-        x = y = 0;
-        t = 20;
-        d = 10;
+        x = 350;
+        y = 240;
+        tamX = 30;
+        tamY = 30;
+        vel = 10;
     }
 
     @Override
@@ -64,6 +67,4 @@ public class TCPServerAtivosMain extends Thread {
         super.finalize();
         this.server.close();
     }
-
-
 }

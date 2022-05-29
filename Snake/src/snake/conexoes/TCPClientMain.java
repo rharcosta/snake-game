@@ -1,9 +1,10 @@
-package snake;
+package snake.conexoes;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import snake.Jogar;
 
 
 public class TCPClientMain {

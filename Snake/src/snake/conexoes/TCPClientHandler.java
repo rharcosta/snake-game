@@ -1,10 +1,11 @@
-package snake;
+package snake.conexoes;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.StringTokenizer;
+import snake.Jogar;
 
 public class TCPClientHandler extends Thread {
 
@@ -31,13 +32,14 @@ public class TCPClientHandler extends Thread {
                 if (message == null || message.equals("")) {
                     break;
                 }
-                this.caller.apagaBolinha();
+                this.caller.apagaCobrinha();
                 StringTokenizer tokens = new StringTokenizer(message, "|");
                 this.caller.x = Integer.parseInt(tokens.nextToken());
                 this.caller.y = Integer.parseInt(tokens.nextToken());
-                this.caller.t = Integer.parseInt(tokens.nextToken());
-                this.caller.d = Integer.parseInt(tokens.nextToken());
-                this.caller.pintaBolinha();
+                this.caller.tamX = Integer.parseInt(tokens.nextToken());
+                this.caller.tamY = Integer.parseInt(tokens.nextToken());
+                this.caller.vel = Integer.parseInt(tokens.nextToken());
+                this.caller.pintaCobrinha();
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 break;
