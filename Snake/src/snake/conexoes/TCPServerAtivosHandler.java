@@ -44,6 +44,9 @@ public class TCPServerAtivosHandler extends Thread {
                 break;
             case KeyEvent.VK_LEFT:
                 caller.x -= caller.vel;
+                if (caller.score > 0) {
+                    caller.vel += 10;
+                }
                 if (caller.x < 0) {
                     caller.x = 700;
                 }
@@ -56,22 +59,13 @@ public class TCPServerAtivosHandler extends Thread {
                 break;
             case KeyEvent.VK_UP:
                 caller.y -= caller.vel;
+                if (caller.score > 0) {
+                    caller.vel += 10;
+                }
                 if (caller.y < 0) {
                     caller.y = 480;
                 }
                 break;
-            //case KeyEvent.VK_A:
-            //    caller.d--;
-            //    if (caller.d < 0) {
-            //        caller.d = 0;
-            //    }
-            //    break;
-            //case KeyEvent.VK_S:
-            //    caller.d++;
-            //    if (caller.d > 10) {
-            //        caller.d = 10;
-            //    }
-            //    break;
         }
     }
 

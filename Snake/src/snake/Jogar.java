@@ -10,6 +10,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -41,6 +43,7 @@ public class Jogar extends javax.swing.JFrame {
         Icon imagem = new ImageIcon(icon.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
         logo.setIcon(imagem);
         this.repaint();
+        sleep();
     }
 
     public void pintaCobrinha() {
@@ -56,20 +59,32 @@ public class Jogar extends javax.swing.JFrame {
 
         //maçã
         g.setColor(Color.red);
-        g.fillOval(macaX, macaY, 10, 10);
+        g.fillRect(macaX, macaY, 10, 10);
 
         if (new Rectangle(x, y, tamX, tamY).intersects(new Rectangle(macaX, macaY, 10, 10))) {
             macaX = new Random().nextInt(480 - 10);
             macaY = new Random().nextInt(480 - 10);
             score++;
-            tamX++;
             this.repaint();
+
+            g.setColor(Color.BLACK);
+            g.fillRect(x, y, tamX, tamY);
         }
     }
 
     public void apagaCobrinha() {
         g.setColor(jPanel1.getBackground());
         g.fillRect(x, y, tamX, tamY);
+    }
+
+    private void sleep() {
+        // Evitar que outro programa mate a Thread enquanto ela está dormindo
+        try {
+
+            Thread.sleep(20); //20 milissegundos- 50 fps (roda 50 vezes por segundo)
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Jogar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")

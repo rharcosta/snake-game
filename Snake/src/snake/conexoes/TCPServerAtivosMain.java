@@ -1,6 +1,5 @@
 package snake.conexoes;
 
-import java.awt.Rectangle;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,7 +10,7 @@ public class TCPServerAtivosMain extends Thread {
 
     private List<TCPServerConnection> clientes;
     private ServerSocket server;
-    int x, y, tamX, tamY, vel;
+    public int x, y, tamX, tamY, vel, score;
 
     public TCPServerAtivosMain(int porta) throws IOException {
         this.server = new ServerSocket(porta);
@@ -19,9 +18,10 @@ public class TCPServerAtivosMain extends Thread {
         this.clientes = new ArrayList<>();
         x = 350;
         y = 240;
-        tamX = 30;
-        tamY = 30;
+        tamX = 20;
+        tamY = 20;
         vel = 10;
+        score = 0;
     }
 
     @Override
