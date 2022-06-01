@@ -36,8 +36,7 @@ public class TCPClientHandler extends Thread {
                 StringTokenizer tokens = new StringTokenizer(message, "|");
                 this.caller.x = Integer.parseInt(tokens.nextToken());
                 this.caller.y = Integer.parseInt(tokens.nextToken());
-                this.caller.tamX = Integer.parseInt(tokens.nextToken());
-                this.caller.tamY = Integer.parseInt(tokens.nextToken());
+                this.caller.tam = Integer.parseInt(tokens.nextToken());
                 this.caller.vel = Integer.parseInt(tokens.nextToken());
                 this.caller.pintaCobrinha();
             } catch (Exception ex) {

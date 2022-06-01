@@ -1,79 +1,86 @@
-package snake;
+package snakegame;
 
-import snake.conexoes.TCPClientMain;
+import conexoes.TCPClientMain;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+//import javax.swing.Timer;
 
-public class Jogar extends javax.swing.JFrame {
+public class Jogar extends javax.swing.JFrame implements ActionListener{
 
     Graphics g;
-    public int tam, x, y, vel;
-    int score = 0;
-    int macaX = 200;
-    int macaY = 200;
+    public int larguraTela, alturaTela; 
+            //area;
+    public int tamUnidade; 
+            //delay;
+    public int macaX, macaY;
+    public int corpo1, corpo2;
+    //public char direcao1, direcao2;
+    public int x1[], x2[];
+    public int y1[], y2[];
 
-    public Jogar() {
+    public boolean ativo;
+    //Timer tempo;
 
+    Jogar() {
         initComponents();
         g = jPanel1.getGraphics();
+    }
 
-        BufferedImage logoImg = null;
-        try {
-            logoImg = ImageIO.read(new File(Principal.class.getResource("imagens/sair.png").toURI()));
-        } catch (Exception e) {
-            System.out.println("NÃO ACHEI IMAGEM DO LOGO!");
-            e.printStackTrace();  //Exceção
+    public void iniciar() {
+        ativo = true;
+        //tempo = new Timer(delay, this);
+        //tempo.start();
+        desenhar(g);
+    }
+
+    public void desenhar(Graphics g) {
+        if (ativo) {
+            g.setColor(Color.red);
+            g.fillOval(macaX, macaY, tamUnidade, tamUnidade);
+
+            for (int i = 0; i < corpo1; i++) {
+                if (i == 0) {
+                    g.setColor(Color.PINK);
+                    g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
+                } else {
+                    g.setColor(new Color(255, 33, 240));
+                    g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
+                }
+            }
+            for (int i = 0; i < corpo2; i++) {
+                if (i == 0) {
+                    g.setColor(Color.BLUE);
+                    g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
+                } else {
+                    g.setColor(new Color(255, 33, 240));
+                    g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
+                }
+            }
+        } else {
+            gameOver(g);
         }
-
-        //Imagem na label
-        ImageIcon icon = new ImageIcon(logoImg);
-        Icon imagem = new ImageIcon(icon.getImage().getScaledInstance(logo.getWidth(), logo.getHeight(), Image.SCALE_DEFAULT));
-        logo.setIcon(imagem);
-        this.repaint();
+    }
+    public void gameOver(Graphics g) {
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 75));
+        FontMetrics metrics2 = getFontMetrics(g.getFont());
+        g.drawString("Game Over!", (larguraTela - metrics2.stringWidth("Game Over")) / 2, alturaTela / 2);
     }
 
-    public void pintaCobrinha() {
-
-        //score
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Swis721 BlkOul BT", Font.PLAIN, 24));
-        g.drawString("SCORE: " + score, 10, 25);
-
-        //cobrinha
-        g.setColor(Color.BLACK);
-        g.fillRect(x, y, tam, tam);
-
-        //maçã
-        g.setColor(Color.red);
-        g.fillRect(macaX, macaY, 10, 10);
-
-        if (new Rectangle(x, y, tam, tam).intersects(new Rectangle(macaX, macaY, 10, 10))) {
-            macaX = new Random().nextInt(480 - 10);
-            macaY = new Random().nextInt(480 - 10);
-            score++;
-            this.repaint();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (ativo) {
+            desenhar(g);
         }
-
+        //repaint();
     }
-
-    public void apagaCobrinha() {
-
-        g.setColor(jPanel1.getBackground());
-        g.fillRect(x, y, tam, tam);
-
-    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -85,7 +92,6 @@ public class Jogar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPorta = new javax.swing.JTextField();
-        logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
@@ -151,12 +157,6 @@ public class Jogar extends javax.swing.JFrame {
 
         txtPorta.setText("6789");
 
-        logo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -175,27 +175,21 @@ public class Jogar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnJogar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(70, 70, 70))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
         );
@@ -206,17 +200,8 @@ public class Jogar extends javax.swing.JFrame {
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         closeConnection();
+        System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
-
-    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
-        tcpClient.writeMessage("100");
-    }//GEN-LAST:event_jPanel1FocusGained
-
-    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
-        int tecla = evt.getKeyCode();
-        String mensagem = String.valueOf(tecla);
-        tcpClient.writeMessage(mensagem);
-    }//GEN-LAST:event_jPanel1KeyPressed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
         jPanel1.requestFocus();
@@ -236,9 +221,15 @@ public class Jogar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnJogarActionPerformed
 
-    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_logoMouseClicked
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        int tecla = evt.getKeyCode();
+        String mensagem = String.valueOf(tecla);
+        tcpClient.writeMessage(mensagem);
+    }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
+        tcpClient.writeMessage("100");
+    }//GEN-LAST:event_jPanel1FocusGained
 
     public void closeConnection() {
         try {
@@ -264,7 +255,6 @@ public class Jogar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel logo;
     private javax.swing.JTextField txtPorta;
     private javax.swing.JTextField txtServer;
     // End of variables declaration//GEN-END:variables

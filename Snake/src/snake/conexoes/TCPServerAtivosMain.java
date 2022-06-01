@@ -10,16 +10,16 @@ public class TCPServerAtivosMain extends Thread {
 
     private List<TCPServerConnection> clientes;
     private ServerSocket server;
-    public int x, y, tamX, tamY, vel, score;
+    public int x, y, tam, vel, score;
 
     public TCPServerAtivosMain(int porta) throws IOException {
         this.server = new ServerSocket(porta);
         System.out.println(this.getClass().getSimpleName() + " rodando na porta: " + server.getLocalPort());
         this.clientes = new ArrayList<>();
+        
         x = 350;
         y = 240;
-        tamX = 20;
-        tamY = 20;
+        tam = 20;
         vel = 10;
         score = 0;
     }
