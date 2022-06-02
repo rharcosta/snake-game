@@ -123,7 +123,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
             }
         }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x1[0] <= 0 || x1[0] >= larguraTela || y1[0] <= 0 || y1[0] >= alturaTela) {
+        if (x1[0] < 0 || x1[0] > larguraTela || y1[0] < 0 || y1[0] > alturaTela) {
             ativo = false;
             return;
         }
@@ -137,7 +137,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
             }
         }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x2[0] <= 0 || x2[0] >= larguraTela || y2[0] <= 0 || y2[0] >= alturaTela) {
+        if (x2[0] < 0 || x2[0] > larguraTela || y2[0] < 0 || y2[0] > alturaTela) {
             ativo = false;
             return;
         }
