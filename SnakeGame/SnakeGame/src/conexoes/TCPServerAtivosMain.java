@@ -23,7 +23,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
     int x1[], x2[];
     int y1[], y2[];
     Timer timer;
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         andar();
@@ -39,16 +39,13 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         area = (larguraTela * alturaTela) / (tamUnidade * tamUnidade);
         delay = 175;
         ativo = false;
-        corpo1 = 6;
-        corpo2 = 6;
+        corpo1 = corpo2 = 6;
         direcao1 = 'D';
-        direcao2 = 'E';
+        direcao2 = 'B';
         x1 = new int[area];
         y1 = new int[area];
         x2 = new int[area];
         y2 = new int[area];
-        x2[0] = larguraTela - tamUnidade;
-        y2[0] = alturaTela - tamUnidade;
         criarComida();
     }
 
@@ -106,11 +103,13 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         if ((x1[0] == macaX) && (y1[0] == macaY)) {
             corpo1++;
             criarComida();
+            System.out.println("Entrei 1");
         }
-        else if ((x2[0] == macaX) && (y2[0] == macaY)) {
+        if ((x2[0] == macaX) && (y2[0] == macaY)) {
             corpo2++;
             criarComida();
-        }
+            System.out.println("Entrei 2");
+        }  
     }
 
     public void checarColisao() {
@@ -123,7 +122,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
             }
         }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x1[0] < 0 || x1[0] > larguraTela || y1[0] < 0 || y1[0] > alturaTela) {
+        if (x1[0] < 0 || x1[0] > larguraTela+1 || y1[0] < 0 || y1[0] > alturaTela+1) {
             ativo = false;
             return;
         }
@@ -137,7 +136,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
             }
         }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x2[0] < 0 || x2[0] > larguraTela || y2[0] < 0 || y2[0] > alturaTela) {
+        if (x2[0] < 0 || x2[0] > larguraTela+1 || y2[0] < 0 || y2[0] > alturaTela+1) {
             ativo = false;
             return;
         }
@@ -161,11 +160,10 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
     public synchronized void novoCliente(TCPServerConnection cliente) throws IOException {
         cliente.id = clientes.size() + 1;
         clientes.add(cliente);
-        if(clientes.size() >= 2 && !ativo){
+        if (clientes.size() >= 2 && !ativo) {
             ativo = true;
             timer = new Timer(delay, this);
             timer.start();
-            System.out.println("TCPServerAtivosMain timer start.");
         }
     }
 
