@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class Jogar extends javax.swing.JFrame {
 
-    final Color COR_FUNDO = new Color(153,255,153);
+    final Color COR_FUNDO = new Color(153, 255, 153);
     final Color COR_MACA = new Color(255, 0, 0);
     final Color COR_COBRA1_CABECA = new Color(51, 51, 255);
     final Color COR_COBRA1_CORPO = new Color(51, 102, 255);
@@ -22,6 +22,7 @@ public class Jogar extends javax.swing.JFrame {
     public int tamUnidade;
     public int macaX, macaY;
     public int corpo1, corpo2;
+    public int score1, score2;
     public char direcao1, direcao2;
     public int x1[], x2[];
     public int y1[], y2[];
@@ -38,6 +39,7 @@ public class Jogar extends javax.swing.JFrame {
         g.fillRect(0, 0, larguraTela * 2, alturaTela * 2);
         g.setColor(COR_MACA);
         g.fillOval(macaX, macaY, tamUnidade, tamUnidade);
+        score();
 
         for (int i = 0; i < corpo1; i++) {
             if (i == 0) {
@@ -58,6 +60,16 @@ public class Jogar extends javax.swing.JFrame {
                 g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
             }
         }
+
+    }
+
+    public void score() {
+        g.setColor(Color.blue);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("SCORE 1: " + score1, 200, g.getFont().getSize());
+        g.setColor(Color.pink);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("SCORE 2: " + score2, 400, g.getFont().getSize());
     }
 
     public void gameOver() {
@@ -65,13 +77,19 @@ public class Jogar extends javax.swing.JFrame {
         g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("GAME OVER!", (larguraTela - metrics2.stringWidth("GAME OVER")) / 2, alturaTela / 2);
+        int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
+        if (resposta == JOptionPane.YES_OPTION){
+            ativo = true;
+        } else
+            ativo = false;
     }
 
     public void tick() {
-        if(ativo)
+        if (ativo) {
             desenhar();
-        else
+        } else {
             gameOver();
+        }
     }
 
     @SuppressWarnings("unchecked")

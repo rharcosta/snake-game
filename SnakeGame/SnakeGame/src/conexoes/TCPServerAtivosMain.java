@@ -22,6 +22,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
     char direcao1, direcao2;
     int x1[], x2[];
     int y1[], y2[];
+    int score1, score2;
     Timer timer;
 
     @Override
@@ -40,6 +41,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         delay = 175;
         ativo = false;
         corpo1 = corpo2 = 6;
+        score1 = score2 = 0;
         direcao1 = 'D';
         direcao2 = 'B';
         x1 = new int[area];
@@ -102,13 +104,13 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
     public void comer() {
         if ((x1[0] == macaX) && (y1[0] == macaY)) {
             corpo1++;
+            score1++;
             criarComida();
-            System.out.println("Entrei 1");
         }
         if ((x2[0] == macaX) && (y2[0] == macaY)) {
             corpo2++;
+            score2++;
             criarComida();
-            System.out.println("Entrei 2");
         }  
     }
 
