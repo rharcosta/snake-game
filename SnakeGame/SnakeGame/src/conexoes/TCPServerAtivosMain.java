@@ -33,7 +33,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         this.server = new ServerSocket(porta);
         System.out.println(this.getClass().getSimpleName() + " rodando na porta: " + server.getLocalPort());
         this.clientes = new ArrayList<>();
-        larguraTela = 700;
+        larguraTela = 860;
         alturaTela = 480;
         tamUnidade = 30;
         area = (larguraTela * alturaTela) / (tamUnidade * tamUnidade);
@@ -106,7 +106,7 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
             corpo1++;
             criarComida();
         }
-        if ((x2[0] == macaX) && (y2[0] == macaY)) {
+        else if ((x2[0] == macaX) && (y2[0] == macaY)) {
             corpo2++;
             criarComida();
         }
