@@ -12,10 +12,10 @@ public class Jogar extends javax.swing.JFrame {
 
     final Color COR_FUNDO = new Color(153,255,153);
     final Color COR_MACA = new Color(255, 0, 0);
-    final Color COR_COBRA1_CABECA = new Color(65, 105, 255);
-    final Color COR_COBRA1_CORPO = new Color(0, 127, 255);
-    final Color COR_COBRA2_CABECA = new Color(255, 105, 180);
-    final Color COR_COBRA2_CORPO = new Color(255, 203, 219);
+    final Color COR_COBRA1_CABECA = new Color(51, 51, 255);
+    final Color COR_COBRA1_CORPO = new Color(51, 102, 255);
+    final Color COR_COBRA2_CABECA = new Color(255, 0, 255);
+    final Color COR_COBRA2_CORPO = new Color(255, 102, 255);
 
     Graphics g;
     public int larguraTela, alturaTela, area;
