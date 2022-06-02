@@ -34,7 +34,6 @@ public class Jogar extends javax.swing.JFrame {
     }
 
     public void desenhar() {
-        System.out.println("Desenhando na tela...");
         g.setColor(COR_FUNDO);
         g.fillRect(0, 0, larguraTela * 2, alturaTela * 2);
         g.setColor(COR_MACA);

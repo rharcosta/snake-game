@@ -39,7 +39,8 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         area = (larguraTela * alturaTela) / (tamUnidade * tamUnidade);
         delay = 175;
         ativo = false;
-        corpo1 = corpo2 = 6;
+        corpo1 = 6;
+        corpo2 = 6;
         direcao1 = 'D';
         direcao2 = 'E';
         x1 = new int[area];
@@ -121,15 +122,8 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
                 return;
             }
         }
-        //colisão com a outra cobrinha
-        for (int i = corpo2; i >= 0; i--) {
-            if ((x1[0] == x2[i]) && (y1[0] == y2[i])) {
-                ativo = false;
-                return;
-            }
-        }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x1[0] < 0 || x1[0] > larguraTela || y1[0] < 0 || y1[0] > alturaTela) {
+        if (x1[0] <= 0 || x1[0] >= larguraTela || y1[0] <= 0 || y1[0] >= alturaTela) {
             ativo = false;
             return;
         }
@@ -142,15 +136,8 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
                 return;
             }
         }
-        //colisão com a outra cobrinha
-        for (int i = corpo1; i >= 0; i--) {
-            if ((x2[0] == x1[i]) && (y2[0] == y1[i])) {
-                ativo = false;
-                return;
-            }
-        }
         //cabeça tocar na esquerda, direita, superior, inferior
-        if (x2[0] < 0 || x2[0] > larguraTela || y2[0] < 0 || y2[0] > alturaTela) {
+        if (x2[0] <= 0 || x2[0] >= larguraTela || y2[0] <= 0 || y2[0] >= alturaTela) {
             ativo = false;
             return;
         }
