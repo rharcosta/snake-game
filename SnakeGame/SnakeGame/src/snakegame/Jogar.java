@@ -39,7 +39,6 @@ public class Jogar extends javax.swing.JFrame {
         g.fillRect(0, 0, larguraTela * 2, alturaTela * 2);
         g.setColor(COR_MACA);
         g.fillOval(macaX, macaY, tamUnidade, tamUnidade);
-        score();
 
         for (int i = 0; i < corpo1; i++) {
             if (i == 0) {
@@ -60,7 +59,7 @@ public class Jogar extends javax.swing.JFrame {
                 g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
             }
         }
-
+        score();
     }
 
     public void score() {
@@ -78,10 +77,11 @@ public class Jogar extends javax.swing.JFrame {
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         g.drawString("GAME OVER!", (larguraTela - metrics2.stringWidth("GAME OVER")) / 2, alturaTela / 2);
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
-        if (resposta == JOptionPane.YES_OPTION){
-            ativo = true;
-        } else
-            ativo = false;
+        if (resposta == JOptionPane.YES_OPTION) {
+      
+        } else {
+            System.exit(0);
+        }
     }
 
     public void tick() {
@@ -107,6 +107,7 @@ public class Jogar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {

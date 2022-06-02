@@ -22,7 +22,6 @@ public class TCPClientHandler extends Thread implements ActionListener {
         this.socket = socket;
         this.caller = caller;
         this.input = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-        System.out.println("TCPClientHandler criado.");
     }
 
     @Override
@@ -80,7 +79,6 @@ public class TCPClientHandler extends Thread implements ActionListener {
             if (timer == null && caller.ativo) {
                 timer = new Timer(delay / 2, this);
                 timer.start();
-                System.out.println("TCPClientHandler timer start.");
             }
             return true;
         } catch (Exception ex) {
