@@ -5,82 +5,76 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-//import javax.swing.Timer;
 
-public class Jogar extends javax.swing.JFrame implements ActionListener{
+public class Jogar extends javax.swing.JFrame {
+
+    final Color COR_FUNDO = new Color(63, 193, 23);
+    final Color COR_MACA = new Color(255, 0, 0);
+    final Color COR_COBRA1_CABECA = new Color(36, 185, 255);
+    final Color COR_COBRA1_CORPO = new Color(3, 111, 161);
+    final Color COR_COBRA2_CABECA = new Color(208, 35, 31);
+    final Color COR_COBRA2_CORPO = new Color(161, 3, 0);
 
     Graphics g;
-    public int larguraTela, alturaTela; 
-            //area;
-    public int tamUnidade; 
-            //delay;
+    public int larguraTela, alturaTela, area;
+    public int tamUnidade;
     public int macaX, macaY;
     public int corpo1, corpo2;
-    //public char direcao1, direcao2;
+    public char direcao1, direcao2;
     public int x1[], x2[];
     public int y1[], y2[];
 
     public boolean ativo;
-    //Timer tempo;
 
     Jogar() {
         initComponents();
         g = jPanel1.getGraphics();
     }
 
-    public void iniciar() {
-        ativo = true;
-        //tempo = new Timer(delay, this);
-        //tempo.start();
-        desenhar(g);
-    }
+    public void desenhar() {
+        System.out.println("Desenhando na tela...");
+        g.setColor(COR_FUNDO);
+        g.fillRect(0, 0, larguraTela * 2, alturaTela * 2);
+        g.setColor(COR_MACA);
+        g.fillOval(macaX, macaY, tamUnidade, tamUnidade);
 
-    public void desenhar(Graphics g) {
-        if (ativo) {
-            g.setColor(Color.red);
-            g.fillOval(macaX, macaY, tamUnidade, tamUnidade);
+        for (int i = 0; i < corpo1; i++) {
+            if (i == 0) {
+                g.setColor(COR_COBRA1_CABECA);
+                g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
+            } else {
+                g.setColor(COR_COBRA1_CORPO);
+                g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
+            }
+        }
 
-            for (int i = 0; i < corpo1; i++) {
-                if (i == 0) {
-                    g.setColor(Color.PINK);
-                    g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
-                } else {
-                    g.setColor(new Color(255, 33, 240));
-                    g.fillRect(x1[i], y1[i], tamUnidade, tamUnidade);
-                }
+        for (int i = 0; i < corpo2; i++) {
+            if (i == 0) {
+                g.setColor(COR_COBRA2_CABECA);
+                g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
+            } else {
+                g.setColor(COR_COBRA2_CORPO);
+                g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
             }
-            for (int i = 0; i < corpo2; i++) {
-                if (i == 0) {
-                    g.setColor(Color.BLUE);
-                    g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
-                } else {
-                    g.setColor(new Color(255, 33, 240));
-                    g.fillRect(x2[i], y2[i], tamUnidade, tamUnidade);
-                }
-            }
-        } else {
-            gameOver(g);
         }
     }
-    public void gameOver(Graphics g) {
+
+    public void gameOver() {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
-        g.drawString("Game Over!", (larguraTela - metrics2.stringWidth("Game Over")) / 2, alturaTela / 2);
+        g.drawString("GAME OVER!", (larguraTela - metrics2.stringWidth("GAME OVER")) / 2, alturaTela / 2);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (ativo) {
-            desenhar(g);
-        }
-        //repaint();
+    public void tick() {
+        if(ativo)
+            desenhar();
+        else
+            gameOver();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -95,8 +89,7 @@ public class Jogar extends javax.swing.JFrame implements ActionListener{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        setUndecorated(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -106,7 +99,7 @@ public class Jogar extends javax.swing.JFrame implements ActionListener{
 
         btnSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSair.setText("SAIR");
-        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSair.setEnabled(false);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,17 +125,16 @@ public class Jogar extends javax.swing.JFrame implements ActionListener{
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
 
-        btnJogar.setBackground(new java.awt.Color(255, 255, 255));
         btnJogar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnJogar.setText("JOGAR");
-        btnJogar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJogar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnJogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJogarActionPerformed(evt);
@@ -172,7 +164,7 @@ public class Jogar extends javax.swing.JFrame implements ActionListener{
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
                         .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                         .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnJogar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70))
@@ -191,7 +183,7 @@ public class Jogar extends javax.swing.JFrame implements ActionListener{
                 .addGap(1, 1, 1)
                 .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

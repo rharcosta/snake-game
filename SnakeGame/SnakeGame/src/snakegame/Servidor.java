@@ -90,6 +90,7 @@ public class Servidor extends javax.swing.JFrame {
         int port = Integer.parseInt(porta);
         try {
             (new TCPServerAtivosMain(port)).start();
+            jButton1.setEnabled(false);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         }
