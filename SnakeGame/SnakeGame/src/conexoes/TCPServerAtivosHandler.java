@@ -161,7 +161,7 @@ public class TCPServerAtivosHandler extends Thread implements ActionListener {
             if (timer == null) {
                 timer = new Timer(delay / 2, this);
                 timer.start();
-                System.out.println("TCPServerAtivosHandler timer start.");
+                //System.out.println("TCPServerAtivosHandler timer start.");
             }
             //System.out.println("Mensagem enviada.");
             messageDispatcher(message);
