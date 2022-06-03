@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class Jogar extends javax.swing.JFrame {
 
-    final Color COR_FUNDO = new Color(153, 255, 153);
+    final Color COR_FUNDO = new Color(204, 255, 204);
     final Color COR_MACA = new Color(255, 0, 0);
     final Color COR_COBRA1_CABECA = new Color(51, 51, 255);
     final Color COR_COBRA1_CORPO = new Color(51, 102, 255);
@@ -65,10 +65,10 @@ public class Jogar extends javax.swing.JFrame {
     public void score() {
         g.setColor(Color.blue);
         g.setFont(new Font("Arial", Font.BOLD, 20));
-        g.drawString("SCORE 1: " + score1, 200, g.getFont().getSize());
+        g.drawString("SCORE 1: " + score1, 150, g.getFont().getSize());
         g.setColor(Color.pink);
         g.setFont(new Font("Arial", Font.BOLD, 20));
-        g.drawString("SCORE 2: " + score2, 400, g.getFont().getSize());
+        g.drawString("SCORE 2: " + score2, 300, g.getFont().getSize());
     }
 
     public void gameOver() {
@@ -82,9 +82,12 @@ public class Jogar extends javax.swing.JFrame {
         } else {
             g.drawString("EMPATE!", (larguraTela - metrics2.stringWidth("EMPATE!")) / 2, alturaTela / 2);
         }
+
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
         if (resposta == JOptionPane.YES_OPTION) {
-
+            closeConnection();
+            
+            
         } else {
             closeConnection();
             System.exit(0);
@@ -154,7 +157,7 @@ public class Jogar extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 533, Short.MAX_VALUE)
         );
 
         btnJogar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -166,12 +169,16 @@ public class Jogar extends javax.swing.JFrame {
             }
         });
 
+        txtServer.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtServer.setText("localhost");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Server:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Porta:");
 
+        txtPorta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPorta.setText("6789");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,39 +186,34 @@ public class Jogar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(txtServer, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnJogar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+                .addGap(46, 46, 46)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 895, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7)
-                .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
         );
 
         pack();

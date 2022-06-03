@@ -34,8 +34,8 @@ public class TCPServerAtivosMain extends Thread implements ActionListener {
         this.server = new ServerSocket(porta);
         System.out.println(this.getClass().getSimpleName() + " rodando na porta: " + server.getLocalPort());
         this.clientes = new ArrayList<>();
-        larguraTela = 860;
-        alturaTela = 480;
+        larguraTela = 895;
+        alturaTela = 533;
         tamUnidade = 30;
         area = (larguraTela * alturaTela) / (tamUnidade * tamUnidade);
         delay = 175;

@@ -1,6 +1,7 @@
 package snakegame;
 
 import conexoes.TCPServerAtivosMain;
+import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -8,8 +9,10 @@ public class Servidor extends javax.swing.JFrame {
 
     public Servidor() {
         initComponents();
+        Color minhaCor = new Color(204,255,204);
+        getContentPane().setBackground(minhaCor);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -21,6 +24,7 @@ public class Servidor extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 204));
         setUndecorated(true);
         setResizable(false);
 
