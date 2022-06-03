@@ -147,6 +147,10 @@ public class TCPServerAtivosHandler extends Thread implements ActionListener {
             message += "|";
             message += caller.corpo2;
             message += "|";
+            message += caller.score1;
+            message += "|";
+            message += caller.score2;
+            message += "|";
             message += caller.direcao1;
             message += "|";
             message += caller.direcao2;

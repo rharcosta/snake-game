@@ -70,6 +70,8 @@ public class TCPClientHandler extends Thread implements ActionListener {
             caller.macaY = Integer.parseInt(tokens.nextToken());
             caller.corpo1 = Integer.parseInt(tokens.nextToken());
             caller.corpo2 = Integer.parseInt(tokens.nextToken());
+            caller.score1 = Integer.parseInt(tokens.nextToken());
+            caller.score2 = Integer.parseInt(tokens.nextToken());
             caller.direcao1 = tokens.nextToken().charAt(0);
             caller.direcao2 = tokens.nextToken().charAt(0);
             caller.x1 = lerVetor(tokens.nextToken());

@@ -75,11 +75,18 @@ public class Jogar extends javax.swing.JFrame {
         g.setColor(Color.BLACK);
         g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 75));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
-        g.drawString("GAME OVER!", (larguraTela - metrics2.stringWidth("GAME OVER")) / 2, alturaTela / 2);
+        if (score1 > score2) {
+            g.drawString("JOGADOR 1 VENCEU!", (larguraTela - metrics2.stringWidth("JOGADOR 1 VENCEU")) / 2, alturaTela / 2);
+        } else if (score2 > score1) {
+            g.drawString("JOGADOR 2 VENCEU!", (larguraTela - metrics2.stringWidth("JOGADOR 2 VENCEU")) / 2, alturaTela / 2);
+        } else {
+            g.drawString("EMPATE!", (larguraTela - metrics2.stringWidth("EMPATE!")) / 2, alturaTela / 2);
+        }
         int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
         if (resposta == JOptionPane.YES_OPTION) {
-      
+
         } else {
+            closeConnection();
             System.exit(0);
         }
     }
