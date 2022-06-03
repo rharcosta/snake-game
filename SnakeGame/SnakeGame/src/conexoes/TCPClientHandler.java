@@ -48,17 +48,12 @@ public class TCPClientHandler extends Thread implements ActionListener {
         try {
             if (this.socket.isConnected() && this.input != null) {
                 message = this.input.readLine();
-                //System.out.println("Input");
             } else {
-                //System.out.println("No input");
                 return false;
             }
             if (message == null || message.equals("")) {
-                //System.out.println("Mensagem nula");
                 return false;
             }
-            //System.out.println("Mensagem recebida.");
-            //System.out.println("Mensagem: " + message);
             StringTokenizer tokens = new StringTokenizer(message, "|");
             caller.larguraTela = Integer.parseInt(tokens.nextToken());
             caller.alturaTela = Integer.parseInt(tokens.nextToken());

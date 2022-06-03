@@ -134,8 +134,7 @@ public class TCPServerAtivosHandler extends Thread implements ActionListener {
             message += "|";
             message += caller.tamUnidade;
             message += "|";
-            delay = caller.delay;
-            message += delay;
+            message += caller.delay;
             message += "|";
             message += caller.ativo;
             message += "|";
@@ -165,11 +164,8 @@ public class TCPServerAtivosHandler extends Thread implements ActionListener {
             if (timer == null) {
                 timer = new Timer(delay / 2, this);
                 timer.start();
-                //System.out.println("TCPServerAtivosHandler timer start.");
             }
-            //System.out.println("Mensagem enviada.");
             messageDispatcher(message);
-            //System.out.println("Mensagem: " + message);
             return true;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

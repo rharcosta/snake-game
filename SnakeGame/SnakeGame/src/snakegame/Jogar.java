@@ -73,7 +73,7 @@ public class Jogar extends javax.swing.JFrame {
 
     public void gameOver() {
         g.setColor(Color.BLACK);
-        g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 75));
+        g.setFont(new Font("Swis721 BlkOul BT", Font.BOLD, 60));
         FontMetrics metrics2 = getFontMetrics(g.getFont());
         if (score1 > score2) {
             g.drawString("JOGADOR 1 VENCEU!", (larguraTela - metrics2.stringWidth("JOGADOR 1 VENCEU")) / 2, alturaTela / 2);
@@ -82,14 +82,6 @@ public class Jogar extends javax.swing.JFrame {
         } else {
             g.drawString("EMPATE!", (larguraTela - metrics2.stringWidth("EMPATE!")) / 2, alturaTela / 2);
         }
-
-        //int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
-        //if (resposta == JOptionPane.YES_OPTION) {
-           //colocar algo 
-        //} else {
-        //    closeConnection();
-        //    System.exit(0);
-        //}
     }
 
     public void tick() {

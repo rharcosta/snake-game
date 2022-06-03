@@ -11,7 +11,6 @@ public class TCPClientMain {
 
     public TCPClientMain(String serverAddress, int serverPort, Jogar caller) throws UnknownHostException, IOException {
         this.socket = new Socket(serverAddress, serverPort);
-        //this.socket.setKeepAlive(true);
         handler = new TCPClientHandler(socket, caller);
         this.handler.start();
         this.output = new PrintWriter(this.socket.getOutputStream(), true);
