@@ -83,15 +83,13 @@ public class Jogar extends javax.swing.JFrame {
             g.drawString("EMPATE!", (larguraTela - metrics2.stringWidth("EMPATE!")) / 2, alturaTela / 2);
         }
 
-        int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
-        if (resposta == JOptionPane.YES_OPTION) {
-            closeConnection();
-            
-            
-        } else {
-            closeConnection();
-            System.exit(0);
-        }
+        //int resposta = JOptionPane.showConfirmDialog(this, "Deseja jogar novamente?");
+        //if (resposta == JOptionPane.YES_OPTION) {
+           //colocar algo 
+        //} else {
+        //    closeConnection();
+        //    System.exit(0);
+        //}
     }
 
     public void tick() {
