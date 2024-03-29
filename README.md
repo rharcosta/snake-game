@@ -26,5 +26,5 @@
   * **TCPServerConnection**: responsible for managing connections to the server.
 
 <p align="center">
-  <img src="https://github.com/rharcosta/snake-game/blob/main/SnakeGame.png" />
+  <img src="https://github.com/rharcosta/snake-game/blob/main/Documents/SnakeGame.png" />
 </p>
