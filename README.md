@@ -1,6 +1,6 @@
 # snake-game
 
-## ⏳ Objective
+## ⏳ OBJECTIVE
 
   The main objective of this work was to develop an application that involves, at least, the communication of two clients through a server. 
   The server must act as a mediating entity and repository of data common to customers, in accordance with the problem resolved. 
@@ -12,7 +12,8 @@
   In the end, the player who reaches the highest score during the game wins.
   Initially, the two snakes could not collide with each other, but during development, it was found more interesting to have the objective of count only the final score of each one,        based on the amount of apples eaten by snakes, in order to make the game more dynamic and continuous.
 
-## 🐍 Solution Model
+## 🐍 SOLUTION MODEL
+
   In this model, the server is responsible for carrying out the commands and sending these responses to customers. 
   Customers, in turn, are responsible for receiving these responses and send messages to the server that will serve as an intermediary between the communication of these two clients. 
   The classes present in the application are:
